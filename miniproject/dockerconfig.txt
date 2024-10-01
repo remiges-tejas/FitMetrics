@@ -1,0 +1,19 @@
+https://www.perplexity.ai/search/hey-i-made-a-application-which-zhu5sLwgRqe8VRQckmM_Qg
+
+
+
+docker run --name mysql-db -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=bmi_db -p 3306:3306 -d mysql:latest
+
+
+docker run --name mysql-db -e MYSQL_ROOT_PASSWORD=rootpassword -e MYSQL_DATABASE=docker_bmi_db -e MYSQL_USER=tejas -e MYSQL_PASSWORD=mailpass -p 3306:3306 -d mysql:latest
+
+
+
+# Create a custom network
+docker network create my-custom-net
+
+# Run MySQL container
+docker run --name mysql-container --network my-custom-net -e MYSQL_ROOT_PASSWORD=mailpass -e MYSQL_DATABASE=docker_bmi_db -p 3306:3306 -d mysql:latest
+
+# Run Spring Boot application container
+docker run --name spring-app --network my-custom-net -p 8080:8080 my-spring-app

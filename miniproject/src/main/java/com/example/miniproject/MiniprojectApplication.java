@@ -11,7 +11,7 @@ SpringApplication.run(MiniprojectApplication.class, args);
 }
 
 }
-
+    
 // package com.example.miniproject;
 
 // import org.springframework.boot.SpringApplication;
