@@ -11,7 +11,9 @@ const FileUpload = ({ onFileUpload }) => {
   useEffect(() => {
     const checkExistingData = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/api/bmi/results");
+        const response = await axios.get(
+          "http://localhost:8080/api/bmi/results"
+        );
         if (typeof response.data !== "string") {
           setDataExists(true); // Data exists if response is not a string
         }
@@ -60,7 +62,9 @@ const FileUpload = ({ onFileUpload }) => {
 
   const handleDeleteData = async () => {
     try {
-      const response = await axios.delete("http://localhost:8080/api/bmi/delete");
+      const response = await axios.delete(
+        "http://localhost:8080/api/bmi/delete"
+      );
       alert(response.data); // Show the response message
       onFileUpload(); // Notify parent component to refresh results
       setDataExists(false); // Set dataExists to false after deletion
@@ -71,25 +75,50 @@ const FileUpload = ({ onFileUpload }) => {
   };
 
   return (
-    <div className="max-w-md mx-auto mt-10">
-      <form onSubmit={handleSubmit} className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+    <div className="max-w-md mx-auto   m-3 p-2">
+      {/* Test File Download Button  */}
+      <div className="flex flex-col justify-center gap-3">
+        <p className="bg-teal-900 py-1 mb-auto px-1 text-white font-semibold rounded ">
+          {" "}
+          <marquee behavior="" direction="">
+            {" "}
+            Click below button to Download Test File and then you can able to  upload file and  will get the bmi result
+          </marquee>{" "}
+        </p>
+        <button className="  mb-12 bg-green-600 text-white font-semibold py-2 px-4 rounded shadow hover:bg-gray-200 transition duration-300 hover:text-black">
+          {" "}
+          <a
+            href="https://drive.google.com/file/d/1z0m5C6RQnazME7I1rbdvNVtPPZ7WSpuH/view"
+            target="blank"
+          >
+            {" "}
+            Download Test File
+          </a>
+        </button>
+      </div>
+      <form
+        onSubmit={handleSubmit}
+        className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+      >
         <h2 className="text-lg font-bold mb-4">Upload CSV File</h2>
         <input type="file" onChange={handleFileChange} className="mb-4" />
         <button
           type="submit"
-          className={`w-full bg-teal-600 hover:bg-coral text-white font-bold py-2 px-4 rounded ${loading ? "opacity-50 cursor-not-allowed" : ""}`}
+          className={`w-full bg-teal-600 hover:bg-coral text-white font-bold py-2 px-4 rounded ${
+            loading ? "opacity-50 cursor-not-allowed" : ""
+          }`}
           disabled={loading} // Disable button if loading
         >
           {loading ? "Uploading..." : "Upload"}
         </button>
       </form>
-      
+
       {loading && (
         <div className="flex justify-center">
           <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-teal-600"></div>
         </div>
       )}
-      
+
       {dataExists ? (
         <div>
           <p className="text-green-500">Status: BMI Data Available</p>
@@ -111,9 +140,14 @@ const FileUpload = ({ onFileUpload }) => {
       ) : (
         <div>
           <p className="text-red-500">Status: BMI Data Not Available</p>
-          <p className="text-red-500 mt-2 mb-4">Please Upload File! (.csv file required)</p>
+          <p className="text-red-500 mt-2 mb-4">
+            Please Upload File! (.csv file required)
+          </p>
           <Link to="/bmidata">
-            <button disabled className="bg-green-300 text-white font-semibold py-2 px-4 rounded shadow">
+            <button
+              disabled
+              className="bg-green-300 text-white font-semibold py-2 px-4 rounded shadow"
+            >
               View Data
             </button>
           </Link>
