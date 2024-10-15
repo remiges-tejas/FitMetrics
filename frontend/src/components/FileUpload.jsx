@@ -12,7 +12,7 @@ const FileUpload = ({ onFileUpload }) => {
     const checkExistingData = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:8080/api/bmi/results"
+          "https://fitmetrics.onrender.com/api/bmi/results"
         );
         if (typeof response.data !== "string") {
           setDataExists(true); // Data exists if response is not a string
@@ -44,7 +44,7 @@ const FileUpload = ({ onFileUpload }) => {
     formData.append("file", file);
 
     try {
-      await axios.post("http://localhost:8080/api/bmi/upload", formData);
+      await axios.post("https://fitmetrics.onrender.com/api/bmi/upload", formData);
       alert("File uploaded successfully!"); // Show success message
       onFileUpload(); // Notify parent component to fetch results
       setFile(null); // Reset file input after upload
@@ -63,7 +63,7 @@ const FileUpload = ({ onFileUpload }) => {
   const handleDeleteData = async () => {
     try {
       const response = await axios.delete(
-        "http://localhost:8080/api/bmi/delete"
+        "https://fitmetrics.onrender.com/api/bmi/delete"
       );
       alert(response.data); // Show the response message
       onFileUpload(); // Notify parent component to refresh results

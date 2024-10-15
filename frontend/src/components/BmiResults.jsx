@@ -8,7 +8,7 @@ const BmiResults = () => {
   const fetchBmiResults = async () => {
     setLoading(true); // Start loading
     try {
-      const response = await axios.get("http://localhost:8080/api/bmi/results");
+      const response = await axios.get("https://fitmetrics.onrender.com/api/bmi/results");
       if (typeof response.data === "string") {
         // Handle message indicating no data
         setBmiResults([]);
