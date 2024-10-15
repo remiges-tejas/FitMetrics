@@ -23,7 +23,7 @@ const BmiResults = () => {
     }
   };
 
-  useEffect(() => {
+  useEffect(() => { 
     fetchBmiResults(); // Fetch results when component mounts or when refreshKey changes
   }, []); // Only run once on mount
 
@@ -53,7 +53,7 @@ const BmiResults = () => {
         <table className="min-w-full bg-white border border-gray-200">
           <thead>
             <tr>
-              <th className="border px-4 py-2 bg-teal-700 text-white">ID</th>
+              {/* <th className="border px-4 py-2 bg-teal-700 text-white">ID</th> */}
               <th className="border px-4 py-2 bg-teal-700 text-white">Name</th>
               <th className="border px-4 py-2 bg-teal-700 text-white">Phone</th>
               <th className="border px-4 py-2 bg-teal-700 text-white">
@@ -71,7 +71,7 @@ const BmiResults = () => {
           <tbody>
             {bmiResults.map((result) => (
               <tr key={result.id}>
-                <td className="border px-4 py-2">{result.id}</td>
+                {/* <td className="border px-4 py-2">{result.id}</td> */}
                 <td className="border px-4 py-2">{result.name}</td>
                 <td className="border px-4 py-2">{result.phone}</td>
                 <td className="border px-4 py-2">{result.weight}</td>
